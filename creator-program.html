@@ -575,23 +575,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       margin-top: 50px;
-      align-items: start;
     }
 
     .faq-item {
       border: 1px solid var(--border-light);
       border-radius: 12px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
     }
 
     .faq-question {
-      width: 100%;
-      border: none;
-      outline: none;
-      font-family: inherit;
-      text-align: left;
       padding: 20px;
       background-color: #f8f9fa;
       cursor: pointer;
@@ -602,7 +594,6 @@
       font-size: 15px;
       user-select: none;
       transition: all 0.3s ease;
-      flex-shrink: 0;
     }
 
     .faq-question:hover {
@@ -631,6 +622,7 @@
     }
 
     .faq-item.open .faq-answer {
+      max-height: 400px;
       padding: 20px;
     }
 
@@ -764,25 +756,6 @@
       width: 100%;
     }
 
-    .feature-card-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    .feature-card-header h3 {
-      margin-bottom: 0;
-    }
-
-    .feature-card-header .feature-icon {
-      margin-bottom: 0;
-      font-size: 28px;
-      flex-shrink: 0;
-    }
-
     .navigationsection {
       z-index: 9999;
       -webkit-backdrop-filter: blur(10px);
@@ -911,95 +884,11 @@
       }
     }
 
-    /* Mobile menu button */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      flex-direction: column;
-      gap: 5px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .mobile-menu-btn span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background-color: var(--text-dark);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-
-    .mobile-menu-btn.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .mobile-menu-btn.open span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-
-    .mobile-menu-btn.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile dropdown nav */
-    .mobile-nav {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-      padding: 20px 24px 28px;
-      z-index: 9998;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .mobile-nav.open {
-      display: flex;
-    }
-
-    .mobile-nav a {
-      font-size: 15px;
-      color: var(--text-dark);
-      text-decoration: none;
-      font-weight: 500;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f0;
-      transition: color 0.2s ease;
-    }
-
-    .mobile-nav a:last-of-type {
-      border-bottom: none;
-    }
-
-    .mobile-nav a:hover {
-      color: #6b7fa8;
-    }
-
-    .mobile-nav .btn-get-onedosh {
-      margin-top: 16px;
-      width: 100%;
-      padding: 14px;
-      font-size: 15px;
-    }
-
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         gap: 15px;
         padding: 15px 20px;
-        position: sticky;
-        top: 0;
       }
 
       .header-left {
@@ -1008,11 +897,10 @@
       }
 
       nav {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
       }
 
       section {
@@ -1059,37 +947,22 @@
 </head>
 <body>
   <!-- Header Navigation -->
-  <header style="position:sticky;top:0;z-index:9999;">
+  <header>
     <div class="header-left">
       <div class="logo">
         <img src="assets/logo.svg" alt="logo">
       </div>
-      <div style="display:flex;align-items:center;gap:12px;">
+      <div>
         <nav>
-          <a href="#send-receive">Send &amp; Receive</a>
-          <a href="#spend-card">Spend Card</a>
-          <a href="#blog">Blog</a>
-          <a href="#creator-program">Creator Program</a>
-          <a href="#contact">Contact</a>
-          <button class="btn-get-onedosh">Get OneDosh</button>
-        </nav>
-        <!-- Hamburger button (mobile only) -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <a href="#send-receive">Send & Receive</a>
+        <a href="#spend-card">Spend Card</a>
+        <a href="#blog">Blog</a>
+        <a href="#creator-program">Creator Program</a>
+        <a href="#contact">Contact</a>
+        <button class="btn-get-onedosh">Get OneDosh</button>
+      </nav>
       </div>
     </div>
-    <!-- Mobile dropdown nav -->
-    <nav class="mobile-nav" id="mobileNav">
-      <a href="#send-receive">Send &amp; Receive</a>
-      <a href="#spend-card">Spend Card</a>
-      <a href="#blog">Blog</a>
-      <a href="#creator-program">Creator Program</a>
-      <a href="#contact">Contact</a>
-      <button class="btn-get-onedosh">Get OneDosh</button>
-    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -1107,6 +980,8 @@
     </div>
   </section>
 
+  <!-- <section class="navigationsection"><section class="containerblock-nav"><section class="nav-wrapper"><a href="/" class="link-block w-inline-block"><img src="https://cdn.prod.website-files.com/692ddb23ba1b5e9456e3108f/692ddb23ba1b5e9456e31094_onedosh-logo.svg" loading="lazy" width="160" alt="" class="image-10"></a><div class="headerwrapperright"><div data-w-id="b5966920-ecee-a55e-682a-6b9be9035e0b" class="wrapperlinkheader" style="opacity: 1;"><a href="/send-receive" class="navlink">Send &amp; Receive</a><a href="/onedosh-spend-card" class="navlink">Spend Card</a><a href="/blog" class="navlink">Blog</a><a href="/creator-program" aria-current="page" class="navlink w--current">Creator Program</a><a href="/contact" class="navlink">Contact</a></div><a data-w-id="70c0f81f-5151-9245-4455-39018bc7a9f9" href="https://onedosh.onelink.me/eSAT/s91x43er" target="_blank" class="nav-button-mobile w-button" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Get OneDosh</a><a data-w-id="7a4066d2-9303-7fda-3e87-903ab1866899" href="https://onedosh.onelink.me/eSAT/s91x43er" target="_blank" class="nav-button-mobi w-button">Get OneDosh</a></div><div data-hover="true" data-delay="0" class="dropdown w-dropdown"><div class="w-dropdown-toggle" id="w-dropdown-toggle-0" aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0"><div class="w-icon-dropdown-toggle" aria-hidden="true"></div><div class="text-block-45">Menu</div></div><nav class="dropdown-list-2 w-dropdown-list" id="w-dropdown-list-0" aria-labelledby="w-dropdown-toggle-0"><a href="/send-receive" class="dropdown-link w-dropdown-link" tabindex="0">Send &amp; Receive</a><a href="/onedosh-spend-card" class="dropdown-link w-dropdown-link" tabindex="0">Spend Card</a><a href="/blog" class="dropdown-link w-dropdown-link" tabindex="0">Blog</a><a href="/creator-program" aria-current="page" class="dropdown-link w-dropdown-link w--current" tabindex="0">Creator Program</a><a href="/contact" class="dropdown-link w-dropdown-link" tabindex="0">Contact</a><a href="https://onedosh.onelink.me/eSAT/s91x43er" class="dropdown-link-cta w-dropdown-link" tabindex="0">Get OneDosh</a></nav></div></section></section></section> -->
+
   <!-- Why Creators Section -->
   <section class="why-creators">
     <div class="container">
@@ -1122,21 +997,17 @@
           <p>You're sharing a product people actually use — not speculative hype. Real revenue share, not sponsorships.</p>
         </div>
         <div class="feature-card">
-          <div class="flex">
-              <h3>Global Impact</h3>
-              <div class="feature-icon">
-                <img src="assets/icon2.svg" alt="">
-              </div>
+          <div class="feature-icon">
+            <img src="assets/icon2.svg" alt="">
           </div>
+          <h3>Global Impact</h3>
           <p>Help people send, receive, and spend money across borders without delays or hidden fees.</p>
         </div>
         <div class="feature-card">
-          <div class="flex">
-              <h3>Long-Term Partnerships</h3>
-              <div class="feature-icon">
-                <img src="assets/icon3.svg" alt="">
-              </div>
+          <div class="feature-icon">
+            <img src="assets/icon3.svg" alt="">
           </div>
+          <h3>Long-Term Partnerships</h3>
           <p>We work with creators on milestone-based, transparent agreements — not one-off sponsorships.</p>
         </div>
       </div>
@@ -1200,27 +1071,19 @@
       <h2 class="section-title">We care deeply about trust.</h2>
       <div class="trust-grid">
         <div class="trust-item">
-          <div class="trust-icon">
-            <img src="assets/icon4.svg" alt="">
-          </div>
+          <div class="trust-icon">📋</div>
           <h3>Clear disclosures</h3>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">
-            <img src="assets/icon5.svg" alt="">
-          </div>
+          <div class="trust-icon">🛡️</div>
           <h3>Compliance-first messaging</h3>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">
-            <img src="assets/icon6.svg" alt="">
-          </div>
+          <div class="trust-icon">📄</div>
           <h3>No misleading claims</h3>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">
-            <img src="assets/icon7.svg" alt="">
-          </div>
+          <div class="trust-icon">🎓</div>
           <h3>Education before promotion</h3>
         </div>
       </div>
@@ -1278,104 +1141,84 @@
   <section class="faq-section">
     <div class="container">
       <h2 class="section-title">Still have questions?</h2>
-      <div class="faq-grid" id="faqAccordion">
+      <div class="faq-grid">
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>Do I need a minimum follower count?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>No minimum. We work with creators of all sizes. Credibility and trust matter more than follower count. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            No minimum. We work with creators of all sizes. Credibility and trust matter more than follower count.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>What if my audience is outside Nigeria?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>Perfect. We work with creators anywhere in the world. Our users can transact globally, and so can your audience. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            Perfect. We work with creators anywhere in the world. Our users can transact globally, and so can your audience.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>When do I start earning?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>After you sign, activate, and your first user completes their first USD transaction. Then you earn $0.50/month per active user. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            After you sign, activate, and your first user completes their first USD transaction. Then you earn $0.50/month per active user.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>What's an "active user"?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>A user you referred who completes at least 5 USD transactions per month. You earn for every month they stay active. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            A user you referred who completes at least 5 USD transactions per month. You earn for every month they stay active.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>Is there a cap on earnings?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>No cap. $0.50 per active user, per month, at every tier. Scale as big as you want. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            No cap. $0.50 per active user, per month, at every tier. Scale as big as you want.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>What happens after I sign?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>We schedule a quick 15-minute activation call to generate your creator code, set up dashboard access, and brief you on next steps. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+            We schedule a quick 15-minute activation call to generate your creator code, set up dashboard access, and brief you on next steps.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>Can I promote on all platforms?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>Yes. TikTok, Instagram, YouTube, Twitter, Facebook — all good. Your code works everywhere. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+            Yes. TikTok, Instagram, YouTube, Twitter, Facebook — all good. Your code works everywhere.
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>Do you offer creator support or a dedicated contact?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Every creator is paired with a dedicated point of contact during onboarding.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>How are payouts sent?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. Payouts are processed monthly directly to your OneDosh wallet.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
+          <div class="faq-question">
             <span>Still have more questions?</span>
-            <span class="faq-toggle" aria-hidden="true">▼</span>
-          </button>
+            <span class="faq-toggle">▼</span>
+          </div>
           <div class="faq-answer">
-            <p>Email <strong>creators@onedosh.com</strong> and we'll respond within 24 hours. No question too small. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            Email <strong>creators@onedosh.com</strong> and we'll respond within 24 hours. No question too small.
           </div>
         </div>
       </div>
@@ -1431,109 +1274,13 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
-    (function () {
-      const btn = document.getElementById('mobileMenuBtn');
-      const nav = document.getElementById('mobileNav');
-      if (!btn || !nav) return;
-
-      btn.addEventListener('click', function () {
-        const isOpen = nav.classList.toggle('open');
-        btn.classList.toggle('open', isOpen);
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('open');
       });
-
-      // Close menu when a nav link is clicked
-      nav.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          nav.classList.remove('open');
-          btn.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          btn.setAttribute('aria-label', 'Open menu');
-        });
-      });
-    })();
-
-    // FAQ Accordion — single-open, keyboard accessible, height-animated
-    (function () {
-      const accordion = document.getElementById('faqAccordion');
-      if (!accordion) return;
-
-      const items = Array.from(accordion.querySelectorAll('.faq-item'));
-
-      function closeItem(item) {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        item.classList.remove('open');
-        question.setAttribute('aria-expanded', 'false');
-        answer.style.maxHeight = '0px';
-      }
-
-      function openItem(item) {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        item.classList.add('open');
-        question.setAttribute('aria-expanded', 'true');
-        // Set to actual content height so the CSS transition animates smoothly
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-
-      function toggleItem(item, { closeOthers = true } = {}) {
-        const isOpen = item.classList.contains('open');
-
-        if (closeOthers) {
-          items.forEach((other) => {
-            if (other !== item && other.classList.contains('open')) {
-              closeItem(other);
-            }
-          });
-        }
-
-        if (isOpen) {
-          closeItem(item);
-        } else {
-          openItem(item);
-        }
-      }
-
-      items.forEach((item, index) => {
-        const question = item.querySelector('.faq-question');
-
-        question.addEventListener('click', () => toggleItem(item));
-
-        // Keyboard support: Enter/Space toggles (native for <button>),
-        // arrow keys move focus between questions for easier navigation.
-        question.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            const next = items[index + 1] || items[0];
-            next.querySelector('.faq-question').focus();
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            const prev = items[index - 1] || items[items.length - 1];
-            prev.querySelector('.faq-question').focus();
-          } else if (e.key === 'Home') {
-            e.preventDefault();
-            items[0].querySelector('.faq-question').focus();
-          } else if (e.key === 'End') {
-            e.preventDefault();
-            items[items.length - 1].querySelector('.faq-question').focus();
-          }
-        });
-      });
-
-      // Keep open answers correctly sized if the window is resized
-      // (e.g. text reflow on mobile rotation).
-      window.addEventListener('resize', () => {
-        items.forEach((item) => {
-          if (item.classList.contains('open')) {
-            const answer = item.querySelector('.faq-answer');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-          }
-        });
-      });
-    })();
+    });
 
     // Form Submission
     document.getElementById('creatorForm').addEventListener('submit', async (e) => {
@@ -1580,7 +1327,7 @@
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(⁠ HTTP error! status: ${response.status} ⁠);
         }
 
         showMessage(
@@ -1607,7 +1354,7 @@
 
     function showMessage(text, type, container) {
       container.textContent = '';
-      container.className = `message ${type}`;
+      container.className = ⁠ message ${type} ⁠;
 
       if (type === 'loading') {
         const spinner = document.createElement('span');
